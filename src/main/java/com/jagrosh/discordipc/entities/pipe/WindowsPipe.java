@@ -72,7 +72,6 @@ public class WindowsPipe extends Pipe
 
         file.readFully(d);
         Packet p = new Packet(op, new JSONObject(new String(d)));
-        LOGGER.debug(String.format("Received packet: %s", p.toString()));
         if(listener != null)
             listener.onPacketReceived(ipcClient, p);
         return p;
