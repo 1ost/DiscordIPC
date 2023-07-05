@@ -94,10 +94,6 @@ public class RichPresence
                 .put("party", partyId==null ? null : new JSONObject()
                         .put("id", partyId)
                         .put("size", new JSONArray().put(partySize).put(partyMax)))
-                .put("secrets", new JSONObject()
-                        .put("join", joinSecret)
-                        .put("spectate", spectateSecret)
-                        .put("match", matchSecret))
                 .put("instance", instance)
                 .put("buttons", buttons.getPayloadData());
     }
