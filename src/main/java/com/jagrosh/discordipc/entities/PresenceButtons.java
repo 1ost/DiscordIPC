@@ -29,21 +29,21 @@ public class PresenceButtons {
         }
         return toDump;
     }
-}
 
-class Button {
-    private String label;
-    private String url;
-    public Button(String label, String url) {
-        this.label = label;
-        this.url = url;
-    }
+    class Button {
+        private String label;
+        private String url;
+        public Button(String label, String url) {
+            this.label = label;
+            this.url = url;
+        }
 
-    public JSONObject getPayloadData() {
-        JSONObject toReturn = new JSONObject();
-        toReturn.put("label", label);
-        toReturn.put("url", url);
+        public JSONObject getPayloadData() {
+            JSONObject toReturn = new JSONObject();
+            toReturn.put("label", label);
+            toReturn.put("url", url);
 
-        return toReturn;
+            return toReturn;
+        }
     }
 }
