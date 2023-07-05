@@ -43,11 +43,13 @@ public class RichPresence
     private final String joinSecret;
     private final String spectateSecret;
     private final boolean instance;
+
+    private final PresenceButtons buttons;
     
     public RichPresence(String state, String details, OffsetDateTime startTimestamp, OffsetDateTime endTimestamp, 
             String largeImageKey, String largeImageText, String smallImageKey, String smallImageText, 
             String partyId, int partySize, int partyMax, String matchSecret, String joinSecret, 
-            String spectateSecret, boolean instance)
+            String spectateSecret, boolean instance, PresenceButtons buttons)
     {
         this.state = state;
         this.details = details;
@@ -64,6 +66,7 @@ public class RichPresence
         this.joinSecret = joinSecret;
         this.spectateSecret = spectateSecret;
         this.instance = instance;
+        this.buttons = buttons;
     }
 
     /**
@@ -95,7 +98,8 @@ public class RichPresence
                         .put("join", joinSecret)
                         .put("spectate", spectateSecret)
                         .put("match", matchSecret))
-                .put("instance", instance);
+                .put("instance", instance)
+                .put("buttons", buttons.getPayloadData());
     }
 
     /**
@@ -121,6 +125,7 @@ public class RichPresence
         private String joinSecret;
         private String spectateSecret;
         private boolean instance;
+        private PresenceButtons buttons;
 
         /**
          * Builds the {@link RichPresence} from the current state of this builder.
@@ -132,7 +137,7 @@ public class RichPresence
             return new RichPresence(state, details, startTimestamp, endTimestamp, 
                     largeImageKey, largeImageText, smallImageKey, smallImageText, 
                     partyId, partySize, partyMax, matchSecret, joinSecret, 
-                    spectateSecret, instance);
+                    spectateSecret, instance, buttons);
         }
 
         /**
@@ -328,6 +333,10 @@ public class RichPresence
         {
             this.instance = instance;
             return this;
+        }
+
+        public void setButtons(PresenceButtons buttons) {
+            this.buttons = buttons;
         }
     }
 }
