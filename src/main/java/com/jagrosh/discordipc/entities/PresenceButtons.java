@@ -30,7 +30,7 @@ public class PresenceButtons {
         return toDump;
     }
 
-    class Button {
+    public static class Button {
         private String label;
         private String url;
         public Button(String label, String url) {
